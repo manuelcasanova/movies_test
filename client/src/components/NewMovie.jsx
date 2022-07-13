@@ -1,5 +1,5 @@
 export default function NewMovie () {
   return (
-    <div>Changed</div>
+    <div>NewMovie</div>
   )
 }
