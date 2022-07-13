@@ -27,6 +27,7 @@ export default function MoviesList ({movies}) {
               <td>{movie.movie_title}</td>
               <td>{movie.movie_year}</td>
               <td>{movie.genre_title}</td>
+              <td>{movie.movie_imdb}</td>
               <td>Edit button</td>
               <td>Delete button</td>
             </tr>)}

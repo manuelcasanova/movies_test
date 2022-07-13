@@ -86,6 +86,6 @@ th, td, tr {
   padding: 1em
 }
 
-.levellist_table {
+.movielist_table, .genrelist_table {
   margin: auto;
 }

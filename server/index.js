@@ -25,3 +25,16 @@ app.get("/movies", async (req, res) => {
     console.error(err.message);
   }
 })
+
+//Get all genres
+
+app.get("/genres", async (req, res) => {
+  try {
+    const getAllGenres = await pool.query(
+      'SELECT * from genres'
+      );
+    res.json(getAllGenres.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+})
