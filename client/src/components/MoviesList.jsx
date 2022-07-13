@@ -1,6 +1,15 @@
-import GenresList from "./GenresList"
+import axios from "axios"
 
-export default function MoviesList ({movies}) {
+export default function MoviesList ({movies, setMovies}) {
+
+  function deleteMovie(id) {
+    return axios.delete(`http://localhost:8001/delete/${id}`)
+      .then(res => {
+        setMovies(movies.filter(movie => movie.movie_id !== id))
+        console.log("Movie deleted id:", id)
+      })
+
+  }
 
   return (
     <>
@@ -29,7 +38,11 @@ export default function MoviesList ({movies}) {
               <td>{movie.genre_title}</td>
               <td>{movie.movie_imdb}</td>
               <td>Edit button</td>
-              <td>Delete button</td>
+              <td><button
+                className="button_delete"
+                onClick={() => deleteMovie(movie.movie_id)}
+              >
+                Delete</button></td>
             </tr>)}
       </tbody>
 

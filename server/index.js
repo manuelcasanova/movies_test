@@ -38,3 +38,33 @@ app.get("/genres", async (req, res) => {
     console.error(err.message);
   }
 })
+
+//Delete a movie
+
+app.delete("/delete/:id", async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    console.log("Deleted movie id:", id);
+    const deleteStep = await pool.query(
+      "DELETE FROM movies WHERE movie_id = $1 RETURNING *", [id]
+    )
+    res.json("The movie was deleted")
+  } catch (err) {
+    console.error(err.message)
+  }
+})
+
+//Delete a genre
+
+app.delete("/genres/delete/:id", async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    console.log("Deleted genre id:", id);
+    const deleteStep = await pool.query(
+      "DELETE FROM genres WHERE genre_id = $1 RETURNING *", [id]
+    )
+    res.json("The genre was deleted")
+  } catch (err) {
+    console.error(err.message)
+  }
+})

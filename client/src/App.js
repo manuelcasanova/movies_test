@@ -33,8 +33,8 @@ function App() {
     <div className="App">
       <NewMovie />
       <NewGenre />
-      <MoviesList movies={movies}/>
-      <GenresList genres={genres}/>
+      <MoviesList movies={movies} setMovies={setMovies}/>
+      <GenresList genres={genres} setGenres={setGenres}/>
     </div>
   );
 }
