@@ -4,9 +4,11 @@ import NewMovie from './components/NewMovie';
 import NewGenre from './components/NewGenre';
 import MoviesList from './components/MoviesList';
 import GenresList from './components/GenresList';
+import NavBar from './components/NavBar';
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+
 
 function App() {
 
@@ -31,6 +33,7 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
       <div className="add_movie_and_genre">
       <NewMovie movies={movies} genres={genres} setMovies={setMovies}/>
       <NewGenre genres={genres} setGenres={setGenres}/>
