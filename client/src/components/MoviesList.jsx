@@ -1,7 +1,7 @@
 import axios from "axios"
 import EditMovies from "./EditMovies"
 
-export default function MoviesList ({movies, setMovies}) {
+export default function MoviesList ({movies, setMovies, genres}) {
 
   function deleteMovie(id) {
     return axios.delete(`http://localhost:8001/delete/${id}`)
@@ -38,7 +38,7 @@ export default function MoviesList ({movies, setMovies}) {
               <td>{movie.movie_year}</td>
               <td>{movie.genre_title}</td>
               <td>{movie.movie_imdb}</td>
-              <td><EditMovies /></td>
+              <td><EditMovies movies={movies} movie={movie} genres={genres} setMovies={setMovies}/></td>
               <td><button
                 className="button_delete"
                 onClick={() => deleteMovie(movie.movie_id)}
