@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 
 export default function NewMovie({ movies, genres, setMovies }) {
 
   const [movie_title, setMovieTitle] = useState("");
-  const [movie_year, setMovieYear] = useState(2022);
-  const [movie_genre_id, setMovieGenre] = useState("1");
+  const [movie_year, setMovieYear] = useState(19);
+  const [movie_genre_id, setMovieGenre] = useState("");
   const [movie_imdb, setMovieImdb] = useState("");
+
+  useEffect (() => {
+    const foundGenre = genres.find((genre)=> {
+      return genre.level_id === movie_genre_id
+    })
+    if (!foundGenre && genres.length) {
+      setMovieGenre(genres[0].genre_id)
+    }
+  }, [genres])
 
   function onSubmitForm(e) {
     e.preventDefault();
@@ -39,7 +48,6 @@ export default function NewMovie({ movies, genres, setMovies }) {
 
   function resetForm() {
     setMovieTitle("");
-    setMovieYear("");
     setMovieImdb("");
   }
 
@@ -76,7 +84,7 @@ export default function NewMovie({ movies, genres, setMovies }) {
               <p></p>
 
               <label className="add_movie_title" htmlFor="title">Year</label>
-              <input className="form-control" type="text" name="title" value={movie_year}
+              <input className="form-control" type="text" name="title" value={movie_year} 
               onChange={e => setMovieYear(e.target.value)}/>
               <p></p>
 

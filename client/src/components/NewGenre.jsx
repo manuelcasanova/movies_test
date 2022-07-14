@@ -24,10 +24,6 @@ export default function NewGenre({ genres, setGenres }) {
       genre)
       .then((response) => {
         const newGenre = response.data;
-        // const movieGenre = genres.find((genre) => {
-        //   return genre.genre_id === newGenre.movie_genre_id
-        // })
-        // newGenre.genre_title = movieGenre.genre_title;
         setGenres([newGenre, ...genres])
       })
   }

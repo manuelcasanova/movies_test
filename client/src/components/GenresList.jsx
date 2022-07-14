@@ -1,12 +1,13 @@
 import axios from "axios"
 
-export default function GenresList ({genres, setGenres}) {
+export default function GenresList ({genres, setGenres, movies, setMovies}) {
 
   function deleteGenre(id) {
     return axios.delete(`http://localhost:8001/genres/delete/${id}`)
       .then(res => {
         setGenres(genres.filter(genre => genre.genre_id !== id))
         console.log("Genre deleted id:", id)
+        // setMovies(...movies)
       })
 
   }

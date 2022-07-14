@@ -36,7 +36,7 @@ function App() {
       <NewGenre genres={genres} setGenres={setGenres}/>
       </div>
       <MoviesList movies={movies} setMovies={setMovies}/>
-      <GenresList genres={genres} setGenres={setGenres}/>
+      <GenresList genres={genres} setGenres={setGenres} movies={movies} setMovies={setMovies}/>
     </div>
   );
 }
