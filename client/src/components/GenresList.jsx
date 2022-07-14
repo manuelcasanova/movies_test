@@ -1,16 +1,27 @@
 import axios from "axios"
+import EditGenres from "./EditGenres"
 
 export default function GenresList ({genres, setGenres, movies, setMovies}) {
+
+  console.log(movies)
 
   function deleteGenre(id) {
     return axios.delete(`http://localhost:8001/genres/delete/${id}`)
       .then(res => {
         setGenres(genres.filter(genre => genre.genre_id !== id))
         console.log("Genre deleted id:", id)
-        // setMovies(...movies)
+        setMovies([movies]) //WORKING HERE
       })
-
   }
+
+  // useEffect(() => {
+  //   axios.get(`http://localhost:8001/movies`)
+  //     .then(function (res) {
+  //       setMovies([...res.data])
+        
+  //     })
+  // }, [])
+
 
   return (
     <>
@@ -32,7 +43,7 @@ export default function GenresList ({genres, setGenres, movies, setMovies}) {
       {genres.map(genre =>
             <tr key={genre.genre_id}>
               <td>{genre.genre_title}</td>
-              <td>Edit button</td>
+              <td><EditGenres /></td>
               <td><button
                 className="button_delete"
                 onClick={() => deleteGenre(genre.genre_id)}
