@@ -1,4 +1,5 @@
 import axios from "axios"
+import EditMovies from "./EditMovies"
 
 export default function MoviesList ({movies, setMovies}) {
 
@@ -37,7 +38,7 @@ export default function MoviesList ({movies, setMovies}) {
               <td>{movie.movie_year}</td>
               <td>{movie.genre_title}</td>
               <td>{movie.movie_imdb}</td>
-              <td>Edit button</td>
+              <td><EditMovies /></td>
               <td><button
                 className="button_delete"
                 onClick={() => deleteMovie(movie.movie_id)}
