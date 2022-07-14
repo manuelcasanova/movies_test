@@ -68,3 +68,29 @@ app.delete("/genres/delete/:id", async (req, res) => {
     console.error(err.message)
   }
 })
+
+//Add a movie
+
+app.post("/movies", async (req, res) => {
+  try {
+    const {movie_title, movie_year, movie_genre_id, movie_imdb} = req.body;
+    console.log("reqbody", req.body)
+    const newMovie = await pool.query("INSERT INTO movies (movie_title, movie_year, movie_genre_id, movie_imdb) VALUES ($1, $2, $3, $4) RETURNING *", [movie_title, movie_year, movie_genre_id, movie_imdb])
+    res.json(newMovie.rows[0]);
+  } catch (err) {
+    console.error(err.message)
+  }
+})
+
+//Add a genre
+
+app.post("/genres", async (req, res) => {
+  try {
+    const {genre_title} = req.body;
+    console.log("reqbody", req.body)
+    const newGenre = await pool.query("INSERT INTO genres (genre_title) VALUES ($1) RETURNING *", [genre_title])
+    res.json(newGenre.rows[0]);
+  } catch (err) {
+    console.error(err.message)
+  }
+})

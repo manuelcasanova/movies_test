@@ -30,7 +30,7 @@ code {
   margin-bottom: 1em;
 }
 
-.add_step_and_level {
+.add_movie_and_genre {
   display: flex;
   justify-content: space-around;
 }
@@ -62,6 +62,7 @@ code {
   color: white;
   border: none;
   background-color: rgb(26, 86, 13);
+
 }
 
 .button_submit {
