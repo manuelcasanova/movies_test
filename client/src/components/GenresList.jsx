@@ -3,8 +3,6 @@ import EditGenres from "./EditGenres"
 
 export default function GenresList ({genres, setGenres, movies, setMovies}) {
 
-  console.log(movies)
-
   function deleteGenre(id) {
     return axios.delete(`http://localhost:8001/genres/delete/${id}`)
       .then(res => {
